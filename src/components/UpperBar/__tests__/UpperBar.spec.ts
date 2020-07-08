@@ -22,10 +22,6 @@ describe('UpperBar.vue', () => {
     ]
   });
 
-  const actions = {
-    toggleLeftMenu: jest.fn()
-  };
-
   beforeEach(() => {
     vuetify = new Vuetify();
     wrapper = mount(UpperBar, {
@@ -74,5 +70,38 @@ describe('UpperBar.vue', () => {
     const homeElement = wrapper.findAll('button').at(1);
     homeElement.trigger('click');
     expect(wrapper.vm.$route.hash).toBe('#firstSection');
+  });
+  it('Clicking on inloggen while not logged in emits login', async () => {
+    wrapper.setProps({
+      loginStatus: false
+    });
+    await wrapper.vm.$nextTick();
+
+    expect(wrapper.emitted('login')).not.toEqual([[]]);
+    const loginButton = wrapper.find('#login');
+    loginButton.trigger('click');
+    expect(wrapper.emitted('login')).toEqual([[]]);
+  });
+  it('Clicking on uitloggen while not logged out emits logout', async () => {
+    wrapper.setProps({
+      loginStatus: true
+    });
+    await wrapper.vm.$nextTick();
+
+    expect(wrapper.emitted('logout')).not.toEqual([[]]);
+    const logoutButton = wrapper.find('#logout');
+    logoutButton.trigger('click');
+    expect(wrapper.emitted('logout')).toEqual([[]]);
+  });
+  it('Clicking on registreren button emits register', async () => {
+    wrapper.setProps({
+      loginStatus: false
+    });
+    await wrapper.vm.$nextTick();
+
+    expect(wrapper.emitted('register')).not.toEqual([[]]);
+    const registerButton = wrapper.find('#register');
+    registerButton.trigger('click');
+    expect(wrapper.emitted('register')).toEqual([[]]);
   });
 });

@@ -21,12 +21,27 @@
       </v-btn>
     </div>
     <v-spacer></v-spacer>
-    <v-btn target="_blank" class="darkgreen margin--right">
-      <span class="mr-2 text--boldweight">Registreren</span>
-    </v-btn>
-    <v-btn target="_blank" class="orange">
-      <span class="mr-2 text--boldweight">Inloggen</span>
-    </v-btn>
+    <div v-if="!loginStatus">
+      <v-btn
+        target="_blank"
+        class="darkgreen margin--right"
+        id="register"
+        @click="register()"
+      >
+        <span class="mr-2 text--boldweight">Registreren</span>
+      </v-btn>
+      <v-btn target="_blank" id="login" class="orange" @click="login()">
+        <span class="mr-2 text--boldweight">Inloggen</span>
+      </v-btn>
+    </div>
+    <div v-else>
+      <v-btn target="_blank" class="darkgreen margin--right">
+        <span class="mr-2 text--boldweight">Account</span>
+      </v-btn>
+      <v-btn target="_blank" class="orange" id="logout" @click="logout()">
+        <span class="mr-2 text--boldweight">Uitloggen</span>
+      </v-btn>
+    </div>
   </v-app-bar>
 </template>
 
@@ -45,6 +60,9 @@ export default Vue.extend({
   props: {
     navigationItems: {
       type: Array as () => MenuItem[]
+    },
+    loginStatus: {
+      type: Boolean
     }
   },
   methods: {
@@ -58,6 +76,15 @@ export default Vue.extend({
         const path = `${basePath}#${sectionId}`;
         this.$router.push({ path: path });
       }
+    },
+    login() {
+      this.$emit('login');
+    },
+    logout() {
+      this.$emit('logout');
+    },
+    register() {
+      this.$emit('register');
     }
   }
 });
