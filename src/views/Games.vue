@@ -4,7 +4,7 @@
       ><v-spacer />
       <div v-for="(gameType, index) in gameTypes" :key="index">
         <v-btn color="white" text>
-          <span class="mr-2 text--lightweight" id="menuItemText">{{
+          <span class="mr-2 font-weight-light" id="menuItemText">{{
             gameType
           }}</span>
         </v-btn>
@@ -22,7 +22,7 @@
 import Vue from 'vue';
 
 export default Vue.extend({
-  name: 'Home',
+  name: 'Games',
   components: {
     // HelloWorld
   },

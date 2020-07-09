@@ -1,15 +1,15 @@
 import Vue from 'vue';
 import VueRouter, { RouteConfig } from 'vue-router';
 import Home from '../views/Home.vue';
-import About from '../views/About.vue';
-import Register from '../views/Register/index.vue';
-import LoginDetails from '../views/Register/LoginDetails.vue';
-import GenderDetails from '../views/Register/GenderDetails.vue';
-import PersonalDetails from '../views/Register/PersonalDetails.vue';
-import AddressDetails from '../views/Register/AddressDetails.vue';
-import PhoneDetails from '../views/Register/PhoneDetails.vue';
-import BankDetails from '../views/Register/BankDetails.vue';
-import DetailsOverview from '../views/Register/DetailsOverview.vue';
+import Games from '../views/Games.vue';
+import Registration from '../views/Registration/index.vue';
+import LoginDetails from '../views/Registration/LoginDetails.vue';
+import GenderDetails from '../views/Registration/GenderDetails.vue';
+import PersonalDetails from '../views/Registration/PersonalDetails.vue';
+import AddressDetails from '../views/Registration/AddressDetails.vue';
+import PhoneDetails from '../views/Registration/PhoneDetails.vue';
+import BankDetails from '../views/Registration/BankDetails.vue';
+import DetailsOverview from '../views/Registration/DetailsOverview.vue';
 import store from '@/store';
 
 Vue.use(VueRouter);
@@ -23,25 +23,23 @@ const routes: Array<RouteConfig> = [
   {
     path: '/games',
     name: 'Games',
-    component: About
+    component: Games
   },
   {
     path: '/help',
     name: 'Help'
   },
   {
-    path: '/register',
-    name: 'Register',
+    path: '/registration',
+    name: 'Registration',
     beforeEnter: (to, from, next) => {
       if (!store.state.dialogStatus) {
         next('/');
-      } else if (from.path === '/register/personal') {
-        next('/games');
       }
       next();
     },
     components: {
-      modal: Register
+      modal: Registration
     },
     children: [
       {

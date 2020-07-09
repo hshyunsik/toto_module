@@ -8,13 +8,8 @@
       @register="setDialog(true)"
       id="UpperBar"
     ></upper-bar>
-    <v-main class="background">
-      <v-dialog
-        v-model="dialog"
-        persistent
-        max-width="800"
-        style="max-height: 900px"
-      >
+    <v-main class="darkergreen">
+      <v-dialog v-model="dialog" persistent max-width="800">
         <router-view name="modal" class="container--overwrite" />
       </v-dialog>
       <transition name="fade" mode="out-in">
@@ -31,18 +26,9 @@ import { MenuItem } from '@/store/types';
 
 export default Vue.extend({
   name: 'App',
-
   components: {
     UpperBar
   },
-
-  data: () => ({
-    items: [
-      { text: 'Start with email', icon: 'mdi-mail' },
-      { text: 'Set logins', icon: 'mdi-account' },
-      { text: 'Get your bonus', icon: 'mdi-cash' }
-    ]
-  }),
   computed: {
     menuItems(): MenuItem[] {
       return this.$store.state.menuItems;
@@ -56,7 +42,7 @@ export default Vue.extend({
       },
       set(dialogStatus: boolean) {
         this.$store.dispatch('setDialogStatus', dialogStatus);
-        this.routeTo('register');
+        this.routeTo('registration');
       }
     }
   },
@@ -72,24 +58,15 @@ export default Vue.extend({
     },
     setDialog(dialogStatus: boolean) {
       this.$store.dispatch('setDialogStatus', dialogStatus);
-      this.routeTo('register');
+      this.routeTo('registration');
     }
   }
 });
 </script>
 
 <style lang="scss">
-.text--white {
-  color: white;
-}
-.text--boldweight {
-  font-weight: bold;
-}
-.text--lightweight {
-  font-weight: 400;
-}
-.background {
-  background-color: #007a33;
+.darkergreen {
+  background-color: #007a33 !important;
 }
 .lightgreen {
   background-color: #6eaa7b !important;

@@ -18,10 +18,10 @@
       <v-col cols="6">
         <v-radio-group v-model="gender" label="Geslacht*">
           <v-radio
-            v-for="n in genders"
-            :key="n"
-            :label="n"
-            :value="n"
+            v-for="gender in genders"
+            :key="gender"
+            :label="gender"
+            :value="gender"
           ></v-radio>
         </v-radio-group>
       </v-col>

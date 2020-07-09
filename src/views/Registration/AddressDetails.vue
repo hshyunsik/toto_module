@@ -39,10 +39,7 @@
 import Vue from 'vue';
 
 export default Vue.extend({
-  name: 'AddressDetails',
-  mounted() {
-    this.$store.dispatch('setRegistrationStep', 2);
-  }
+  name: 'AddressDetails'
 });
 </script>
 

@@ -4,14 +4,14 @@
       <v-col class="mb-4" cols="1"> </v-col>
       <v-col class="mb-4" cols="11" align="left">
         <div class="title">Inloggegevens</div>
-        * = verplicht
+        <span>* = verplicht</span>
       </v-col>
     </v-row>
     <v-row class="text-center" align="center">
       <v-divider />
     </v-row>
     <v-row class="text-center" align="center">
-      <v-col cols="2"> </v-col>
+      <v-col cols="12"> </v-col>
     </v-row>
     <v-row class="text-center" align="center">
       <v-col cols="6">
@@ -38,7 +38,6 @@
           :label="`Stuur mij per e-mail promoties`"
         ></v-checkbox>
       </v-col>
-      <v-col cols="6"> </v-col>
     </v-row>
   </v-container>
 </template>

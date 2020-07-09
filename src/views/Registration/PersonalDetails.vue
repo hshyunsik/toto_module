@@ -74,10 +74,7 @@ export default Vue.extend({
   data: () => ({
     date: '',
     menu2: false
-  }),
-  mounted() {
-    this.$store.dispatch('setRegistrationStep', 2);
-  }
+  })
 });
 </script>
 

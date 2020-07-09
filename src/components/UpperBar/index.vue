@@ -28,18 +28,18 @@
         id="register"
         @click="register()"
       >
-        <span class="mr-2 text--boldweight">Registreren</span>
+        <span class="mr-2 font-weight-bold">Registreren</span>
       </v-btn>
       <v-btn target="_blank" id="login" class="orange" @click="login()">
-        <span class="mr-2 text--boldweight">Inloggen</span>
+        <span class="mr-2 font-weight-bold">Inloggen</span>
       </v-btn>
     </div>
     <div v-else>
       <v-btn target="_blank" class="darkgreen margin--right">
-        <span class="mr-2 text--boldweight">Account</span>
+        <span class="mr-2 font-weight-bold">Account</span>
       </v-btn>
       <v-btn target="_blank" class="orange" id="logout" @click="logout()">
-        <span class="mr-2 text--boldweight">Uitloggen</span>
+        <span class="mr-2 font-weight-bold">Uitloggen</span>
       </v-btn>
     </div>
   </v-app-bar>
@@ -51,12 +51,6 @@ import { MenuItem } from '@/store/types.ts';
 
 export default Vue.extend({
   name: 'UpperBar',
-  components: {},
-  data() {
-    return {
-      upperSlickMenu: true
-    };
-  },
   props: {
     navigationItems: {
       type: Array as () => MenuItem[]
@@ -93,36 +87,4 @@ export default Vue.extend({
 });
 </script>
 
-<style lang="scss" scoped>
-@media screen and (max-width: 767px) {
-  #menu {
-    display: none;
-  }
-}
-@media screen and (min-width: 768px) {
-  #right_menu {
-    display: none;
-  }
-}
-@media screen and (max-width: 1024px) {
-  // #menuItemText {
-  //   font-size: 10px;
-  // }
-  #title {
-    font-size: x-large;
-  }
-}
-@media screen and (min-width: 1024px) {
-  #title {
-    font-size: xx-large;
-  }
-}
-#title {
-  font-weight: 750;
-  text-transform: uppercase;
-}
-// header > div {
-//   justify-content: space-between !important;
-//   background-color: red;
-// } https://www.w3schools.com/css/css_rwd_mediaqueries.asp
-</style>
+<style lang="scss" scoped></style>

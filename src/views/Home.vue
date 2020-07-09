@@ -3,19 +3,19 @@
     <v-row class="text-center onlyRow" justify="center" align="center">
       <v-col class="mb-12" cols="12"> </v-col>
       <v-col class="mb-4" cols="12">
-        <h1 class="display-2 font-weight-bold mb-3 text--white">
+        <h1 class="display-2 font-weight-bold mb-3 white--text">
           Welcome bij Toto
         </h1></v-col
       >
       <v-col cols="3"> </v-col>
       <v-col cols="6">
-        <p class="subheading font-weight-regular text--white">
+        <p class="subheading font-weight-regular white--text">
           Alle nieuwe spelers krijgen tot <b>€1000 gratis speelgeld</b> en
           <b>100 gratis spins</b>.
           <br />
           Maak een <b>gratis account</b> aan om te beginnen!
         </p>
-        <p class="subheading font-weight-regular text--white"></p>
+        <p class="subheading font-weight-regular white--text"></p>
       </v-col>
       <v-col cols="3"> </v-col>
 
@@ -25,7 +25,7 @@
           class="darkgreen margin--right"
           @click="register()"
         >
-          <span class="mr-2 text--white">Registreren</span>
+          <span class="mr-2 white--text">Registreren</span>
         </v-btn>
       </v-col>
     </v-row>
@@ -46,7 +46,7 @@ export default Vue.extend({
     },
     register() {
       this.$store.dispatch('setDialogStatus', true);
-      this.routeTo('register');
+      this.routeTo('registration');
     }
   }
 });

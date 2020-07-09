@@ -1,7 +1,7 @@
 <template>
   <v-card>
     <v-card-title class="headline">Registreren</v-card-title>
-    <!-- Registreren binnen de witte vakken -->
+
     <v-stepper :value="registrationStep">
       <v-stepper-header>
         <v-stepper-step :complete="registrationStep > 1" step="1"
@@ -35,7 +35,7 @@
 import Vue from 'vue';
 
 export default Vue.extend({
-  name: 'Register',
+  name: 'Registration',
   data: () => ({
     valid: true
   }),
@@ -50,7 +50,6 @@ export default Vue.extend({
     },
     async routeTo(routePath: string) {
       const valid = await this.validate();
-      console.log(valid);
       if (!valid) {
         return;
       }
@@ -62,50 +61,26 @@ export default Vue.extend({
     closeDialog() {
       this.$store.dispatch('setDialogStatus', false);
       switch (this.$route.path) {
-        case '/register':
+        case '/registration':
           this.$router.go(-1);
           break;
-        case '/register/gender':
+        case '/registration/gender':
           this.$router.go(-2);
           break;
-        // case '/register/personal':
-        //   this.routeTo('/register/address');
-        //   break;
-        // case '/register/address':
-        //   this.routeTo('/register/phone');
-        //   break;
-        // case '/register/phone':
-        //   this.routeTo('/register/bank');
-        //   break;
-        // case '/register/bank':
-        //   this.routeTo('/register/overview');
-        //   break;
-        case '/register/overview':
+        case '/registration/overview':
           this.$router.go(-3);
           break;
       }
     },
     nextPage() {
       switch (this.$route.path) {
-        case '/register':
-          this.routeTo('/register/gender');
+        case '/registration':
+          this.routeTo('/registration/gender');
           break;
-        case '/register/gender':
-          this.routeTo('/register/overview');
+        case '/registration/gender':
+          this.routeTo('/registration/overview');
           break;
-        // case '/register/personal':
-        //   this.routeTo('/register/address');
-        //   break;
-        // case '/register/address':
-        //   this.routeTo('/register/phone');
-        //   break;
-        // case '/register/phone':
-        //   this.routeTo('/register/bank');
-        //   break;
-        // case '/register/bank':
-        //   this.routeTo('/register/overview');
-        //   break;
-        case '/register/overview':
+        case '/registration/overview':
           this.$store.dispatch('setLoginStatus', true);
           this.$store.dispatch('setDialogStatus', false);
           this.routeTo('/games');
@@ -114,7 +89,7 @@ export default Vue.extend({
       }
     },
     previousPage() {
-      if (this.$route.path === '/register') {
+      if (this.$route.path === '/registration') {
         this.$store.dispatch('setDialogStatus', false);
       }
       this.$router.go(-1);
