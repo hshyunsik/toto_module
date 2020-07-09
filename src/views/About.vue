@@ -34,12 +34,12 @@ export default Vue.extend({
 });
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 .background--home {
   background-image: url('../assets/GamePage2.png');
   background-size: 105%;
-  background-position: right;
-  height: 100%;
+  background-position-x: right;
+  height: 500%;
 }
 @media (min-width: 960px) {
   .row {

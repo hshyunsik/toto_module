@@ -67,6 +67,9 @@ export default Vue.extend({
   },
   methods: {
     routeTo(path: string) {
+      if (this.$route.path === path) {
+        return;
+      }
       this.$router.push(path);
     },
     routeToSection(basePath: string, sectionId?: string) {

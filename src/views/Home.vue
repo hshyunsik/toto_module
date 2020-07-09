@@ -20,7 +20,11 @@
       <v-col cols="3"> </v-col>
 
       <v-col class="mb-5" cols="12">
-        <v-btn target="_blank" class="darkgreen margin--right">
+        <v-btn
+          target="_blank"
+          class="darkgreen margin--right"
+          @click="register()"
+        >
           <span class="mr-2 text--white">Registreren</span>
         </v-btn>
       </v-col>
@@ -32,7 +36,19 @@
 import Vue from 'vue';
 
 export default Vue.extend({
-  name: 'Home'
+  name: 'Home',
+  methods: {
+    routeTo(routePath: string) {
+      if (this.$route.path === routePath) {
+        return;
+      }
+      this.$router.push({ path: routePath });
+    },
+    register() {
+      this.$store.dispatch('setDialogStatus', true);
+      this.routeTo('register');
+    }
+  }
 });
 </script>
 
