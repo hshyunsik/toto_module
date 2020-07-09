@@ -18,8 +18,9 @@
         <v-text-field
           label="Email*"
           placeholder="example@mail.com"
+          ty
           outlined
-          :rules="[rules.required]"
+          :rules="[rules.required, rules.email]"
           dense
           v-model="emailAddress"
         ></v-text-field>
@@ -49,7 +50,8 @@ export default Vue.extend({
   name: 'LoginDetails',
   data: () => ({
     rules: {
-      required: (value: string) => !!value || 'Required.'
+      required: (value: string) => !!value || 'Required.',
+      email: (value: string) => /.+@.+\..+/.test(value) || 'Invalid Email.'
     }
   }),
   computed: {

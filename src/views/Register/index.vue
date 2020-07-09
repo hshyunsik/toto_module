@@ -61,10 +61,28 @@ export default Vue.extend({
     },
     closeDialog() {
       this.$store.dispatch('setDialogStatus', false);
-      if (this.$route.path === '/register') {
-        this.$router.go(-1);
-      } else {
-        this.$router.go(-2);
+      switch (this.$route.path) {
+        case '/register':
+          this.$router.go(-1);
+          break;
+        case '/register/gender':
+          this.$router.go(-2);
+          break;
+        // case '/register/personal':
+        //   this.routeTo('/register/address');
+        //   break;
+        // case '/register/address':
+        //   this.routeTo('/register/phone');
+        //   break;
+        // case '/register/phone':
+        //   this.routeTo('/register/bank');
+        //   break;
+        // case '/register/bank':
+        //   this.routeTo('/register/overview');
+        //   break;
+        case '/register/overview':
+          this.$router.go(-3);
+          break;
       }
     },
     nextPage() {
@@ -88,6 +106,7 @@ export default Vue.extend({
         //   this.routeTo('/register/overview');
         //   break;
         case '/register/overview':
+          this.$store.dispatch('setLoginStatus', true);
           this.$store.dispatch('setDialogStatus', false);
           this.routeTo('/games');
           break;
